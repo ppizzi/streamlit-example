@@ -16,6 +16,55 @@ In the meantime, below is an example of what you can do with just a few lines of
 """
 
 
+
+
+#------ new code 
+
+import re
+import requests
+import numpy as np
+import json
+import os
+
+#Ciudad Real - valdepeñas - gasoleo A habitual - 
+url1 = 'https://geoportalgasolineras.es/geoportalmovil/eess/search.do?tipoCarburante=4&rotulo=&venta=P&provincia=13&localidad=7339&tipoDestinatarioPlan=&operador=&nombrePlan=&calle=&numero=&codPostal='
+
+
+resp = requests.get(url1)
+print(resp.status_code)
+
+
+data = pd.read_html(url1)
+data
+
+df = data[0] 
+df
+
+df.dtypes
+
+df.Precio = df.Precio.str.replace('€', '').str.replace(',','.').astype('float')
+df.Precio
+
+
+date=pd.to_datetime('today').strftime("%Y%m%d")
+df['date']=date
+# df['date']=(pd.DatetimeIndex(df['date']) + pd.DateOffset(-1)).strftime("%Y%m%d") #add or reduce days
+df
+
+
+
+
+
+
+
+
+
+
+
+
+#------------- original code of the app
+
+
 with st.echo(code_location='below'):
     total_points = st.slider("Number of points in spiral", 1, 5000, 2000)
     num_turns = st.slider("Number of turns in spiral", 1, 100, 9)
