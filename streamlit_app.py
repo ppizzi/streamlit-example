@@ -5,7 +5,7 @@ import pandas as pd
 
 
 #https://betterprogramming.pub/how-to-make-http-requests-in-streamlit-app-f22a77fd1ed7
-!pip install lxml
+!pip3 install lxml
 
 def fetch(session, url):
     try:
