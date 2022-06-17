@@ -44,7 +44,7 @@ def main():
 
             if data1:
                 df=data1[0]
-                st.text(df)
+                st.dataframe(df)
 
 if __name__ == '__main__':
     main()
