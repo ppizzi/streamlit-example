@@ -21,14 +21,15 @@ def fetchdf(session, url):
         result = session.get(url)
         st.text(result.status_code)
         #result.data
-        data = pd.read_html(result.text)
+        result.text
+        #data = pd.read_html(result.text)
         #components.html(result)
-        df=data[0]
-        df
+        #df=data[0]
+        #df
                 
         
-        st.text('hereA')
-        st.text(pd.read_html(url)[1])
+        #st.text('hereA')
+        #st.text(pd.read_html(url)[1])
         #df=data[0]
         #df
         #st.text(result)
