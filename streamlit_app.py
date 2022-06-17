@@ -35,10 +35,10 @@ def main():
             #st.text(url1)
             data1 = fetchdf(session, f'https://geoportalgasolineras.es/geoportalmovil/eess/search.do?tipoCarburante=4&rotulo=&venta=P&provincia=13&localidad=7339&tipoDestinatarioPlan=&operador=&nombrePlan=&calle=&numero=&codPostal=' )
             
-            if data:
-                st.image(data['download_url'], caption=f"Author: {data['author']}")
-            else:
-                st.error("Error")
+            #if data:
+            #    st.image(data['download_url'], caption=f"Author: {data['author']}")
+            #else:
+            #    st.error("Error")
 
             if data1:
                 df=data[0]
