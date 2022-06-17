@@ -1,4 +1,5 @@
 import streamlit as st
+import streamlit.components.v1 as components
 import requests
 import pandas as pd
 
@@ -21,10 +22,14 @@ def fetchdf(session, url):
         st.text(result.status_code)
         result.data
         data = pd.read_html(url)
-        st.text('hereA')
-        st.text(pd.read_html(url)[1])
+        components.html(data)
         df=data[0]
         df
+        
+        st.text('hereA')
+        st.text(pd.read_html(url)[1])
+        #df=data[0]
+        #df
         #st.text(result)
         #return result
         return data
