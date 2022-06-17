@@ -3,6 +3,9 @@ import requests
 import pandas as pd
 
 
+#https://betterprogramming.pub/how-to-make-http-requests-in-streamlit-app-f22a77fd1ed7
+
+
 def fetch(session, url):
     try:
         result = session.get(url)
