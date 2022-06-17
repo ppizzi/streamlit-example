@@ -31,20 +31,29 @@ def fetchdf(session, url):
 
 def main():
     st.set_page_config(page_title="MyGasApp", page_icon="🤖")
-    st.title("Get gas prices in valedepeñas")
+    st.title("Get gas prices in Valdepeñas")
     session = requests.Session()
+   
     with st.form("my_form"):
-        index = st.number_input("ID", min_value=0, max_value=100, key="index")
+        #index = st.number_input("ID", min_value=0, max_value=100, key="index")
         submitted = st.form_submit_button("Submit")
 
         if submitted:
             st.write("Result")
             res = fetchdf(session, f'https://geoportalgasolineras.es/geoportalmovil/eess/search.do?tipoCarburante=4&rotulo=&venta=P&provincia=13&localidad=7339&tipoDestinatarioPlan=&operador=&nombrePlan=&calle=&numero=&codPostal=' )
-
             if res:
-                df=pd.read_html(res.text)
-                df[0]
+                df=pd.read_html(res.text)[0]
+                df
+                
+                try: 
+                    hist_df = pd.read_csv('gasolineras_ciudad_real.csv') 
+                    hist_df.shape
+                    hist_df.head(5)
+                except: 
+                    st.text('file not found')
 
+                
+                
 
 if __name__ == '__main__':
     main()
