@@ -19,10 +19,10 @@ def fetchdf(session, url):
         st.text(url)
         result = session.get(url)
         st.text(result.status_code)
-        result.text
+        #result.text
         data = pd.read_html(url)
         st.text('hereA')
-        st.text(pd.read_html(url)[0])
+        st.text(pd.read_html(url)[1])
         df=data[0]
         df
         #st.text(result)
