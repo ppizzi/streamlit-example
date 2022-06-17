@@ -25,7 +25,7 @@ def fetchdf(session, url):
         st.text(pd.read_html(url)[0])
         df=data[0]
         df
-        st.text(result)
+        #st.text(result)
         #return result
         return data
     except Exception:
