@@ -41,7 +41,7 @@ def main():
             #    st.error("Error")
 
             if data1:
-                df=data[0]
+                df=data1[0]
                 df
 
 if __name__ == '__main__':
