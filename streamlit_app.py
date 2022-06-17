@@ -22,7 +22,7 @@ def fetchdf(session, url):
         result.text
         data = pd.read_html(url)
         st.text('hereA')
-        st.text(pd.read_html(url))
+        st.text(pd.read_html(url)[0])
         df=data[0]
         df
         st.text(result)
