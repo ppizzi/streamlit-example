@@ -16,11 +16,12 @@ def fetch(session, url):
     
 def fetchdf(session, url):
     try:
-        st.text('here 1 ')
+        st.text(url)
         result = session.get(url)
         data = pd.read_html(url)
         df=data[0]
         df
+        st.text(result)
         #return result
         return data
     except Exception:
