@@ -27,32 +27,66 @@ import json
 import os
 
 #Ciudad Real - valdepeñas - gasoleo A habitual - 
-url1 = 'https://geoportalgasolineras.es/geoportalmovil/eess/search.do?tipoCarburante=4&rotulo=&venta=P&provincia=13&localidad=7339&tipoDestinatarioPlan=&operador=&nombrePlan=&calle=&numero=&codPostal='
+url = 'https://geoportalgasolineras.es/geoportalmovil/eess/search.do?tipoCarburante=4&rotulo=&venta=P&provincia=13&localidad=7339&tipoDestinatarioPlan=&operador=&nombrePlan=&calle=&numero=&codPostal='
 
 
-resp = requests.get(url1)
-print(resp.status_code)
+#resp = requests.get(url)
+#print(resp.status_code)
 
 
-data = pd.read_html(url1)
-data
-
-df = data[0] 
-df
-
-df.dtypes
-
-df.Precio = df.Precio.str.replace('€', '').str.replace(',','.').astype('float')
-df.Precio
-
-
-date=pd.to_datetime('today').strftime("%Y%m%d")
-df['date']=date
-# df['date']=(pd.DatetimeIndex(df['date']) + pd.DateOffset(-1)).strftime("%Y%m%d") #add or reduce days
-df
+#data = pd.read_html(url)
+#data
 
 
 
+def fetch(session, url):
+    try:
+        result = session.get(url)
+        return result.json()
+    except Exception:
+        return {}
+
+def next_step(df):
+    df.dtypes
+    df.Precio = df.Precio.str.replace('€', '').str.replace(',','.').astype('float')
+    df.Precio
+    date=pd.to_datetime('today').strftime("%Y%m%d")
+    df['date']=date
+    # df['date']=(pd.DatetimeIndex(df['date']) + pd.DateOffset(-1)).strftime("%Y%m%d") #add or reduce days
+    df    
+    
+    return
+    
+
+def main():
+    st.set_page_config(page_title="Pietro s App", page_icon="🤖")
+    st.title("Get Gas price Valdepenas")
+    session = requests.Session()
+    with st.form("my_form"):
+        index = st.number_input("ID", min_value=0, max_value=100, key="index")
+
+        submitted = st.form_submit_button("Submit")
+
+        if submitted:
+            st.write("Result")
+            #data = fetch(session, f"https://picsum.photos/id/{index}/info")
+            data = fetch(session, url)
+
+            if data:
+                df = data[0] 
+                df
+                #st.image(data['download_url'], caption=f"Author: {data['author']}")
+                next_step(df)
+            else:
+                st.error("Error")
+
+                
+                
+                
+
+
+if __name__ == '__main__':
+    main()
 
 
 
