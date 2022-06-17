@@ -22,8 +22,8 @@ def fetchdf(session, url):
         st.text(result.status_code)
         #result.data
         #result.text
-        data = pd.read_html(result.text)
-        data
+        #data = pd.read_html(result.text)
+        #data
         #components.html(result)
         #df=data[0]
         #df
@@ -34,8 +34,8 @@ def fetchdf(session, url):
         #df=data[0]
         #df
         #st.text(result)
-        #return result
-        return data
+        return result
+        #return data
     except Exception:
         return {}
 
@@ -53,19 +53,20 @@ def main():
             #data = fetch(session, f"https://picsum.photos/id/{index}/info")
             #url1 = 'https://geoportalgasolineras.es/geoportalmovil/eess/search.do?tipoCarburante=4&rotulo=&venta=P&provincia=13&localidad=7339&tipoDestinatarioPlan=&operador=&nombrePlan=&calle=&numero=&codPostal='
             #st.text(url1)
-            data1 = fetchdf(session, f'https://geoportalgasolineras.es/geoportalmovil/eess/search.do?tipoCarburante=4&rotulo=&venta=P&provincia=13&localidad=7339&tipoDestinatarioPlan=&operador=&nombrePlan=&calle=&numero=&codPostal=' )
+            res = fetchdf(session, f'https://geoportalgasolineras.es/geoportalmovil/eess/search.do?tipoCarburante=4&rotulo=&venta=P&provincia=13&localidad=7339&tipoDestinatarioPlan=&operador=&nombrePlan=&calle=&numero=&codPostal=' )
             
             #if data:
             #    st.image(data['download_url'], caption=f"Author: {data['author']}")
             #else:
             #    st.error("Error")
 
-            if data1:
-                df=data1[0]
-                st.text('here2')
-                st.dataframe(df)
-                st.text('here3')
-                st.write(df)
+            if res:
+                df=pd.read_html(res.text)
+                df
+                #st.text('here2')
+                #st.dataframe(df)
+                #st.text('here3')
+                #st.write(df)
 
 if __name__ == '__main__':
     main()
