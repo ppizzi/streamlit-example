@@ -57,10 +57,8 @@ def main():
                     hist_df.drop_duplicates(subset=['Rótulo','Dirección','date'], keep='first', inplace=True, ignore_index=True)
                     st.text('shape: ', hist_df.shape)
                     #hist_df.head(20)
-                    hist_df.to_csv('gasolineras_ciudad_real.csv', index=False)  
-
-                    
-                except: 
+                    hist_df.to_csv('gasolineras_ciudad_real.csv', index=False)
+                except:
                     st.text('file not found')
 
                 
