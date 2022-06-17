@@ -19,6 +19,8 @@ def fetchdf(session, url):
         st.text('here 1 ')
         result = session.get(url)
         data = pd.read_html(url)
+        df=data[0]
+        df
         #return result
         return data
     except Exception:
