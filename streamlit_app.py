@@ -20,11 +20,10 @@ def fetchdf(session, url):
         st.text(url)
         result = session.get(url)
         st.text(result.status_code)
-        result.data
-        data = pd.read_html(url)
-        components.html(data)
-        df=data[0]
-        df
+        #result.data
+        #data = pd.read_html(url)
+        components.html(result)
+                
         
         st.text('hereA')
         st.text(pd.read_html(url)[1])
