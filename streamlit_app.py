@@ -18,6 +18,7 @@ def fetchdf(session, url):
     try:
         st.text(url)
         result = session.get(url)
+        st.text(result.status_code)
         data = pd.read_html(url)
         df=data[0]
         df
