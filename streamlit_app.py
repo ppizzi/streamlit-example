@@ -21,8 +21,9 @@ def fetchdf(session, url):
         result = session.get(url)
         st.text(result.status_code)
         #result.data
-        result.text
-        #data = pd.read_html(result.text)
+        #result.text
+        data = pd.read_html(result.text)
+        data
         #components.html(result)
         #df=data[0]
         #df
