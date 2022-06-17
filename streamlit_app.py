@@ -61,7 +61,7 @@ def main():
 
             if res:
                 df=pd.read_html(res.text)
-                df
+                df[0]
                 #st.text('here2')
                 #st.dataframe(df)
                 #st.text('here3')
