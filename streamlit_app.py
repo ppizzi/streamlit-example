@@ -30,7 +30,8 @@ def fetchdf(session, url):
         return {}
 
 def main():
-    st.set_page_config(page_title="MyGasApp", page_icon="🤖")
+    #st.set_page_config(page_title="MyGasApp", page_icon="🤖")
+    st.set_page_config(page_title="MyGasApp", page_icon=":fuelpump:")
     st.title("Get gas prices in Valdepeñas")
     session = requests.Session()
    
@@ -52,7 +53,10 @@ def main():
                 except: 
                     st.text('file not found')
 
-                
+                if hist_df:
+                    hist_df = hist_df.append(df, ignore_index=True)
+                    st.text('shape: ', hist_df.shape)
+                    hist_df.tail(5)
                 
 
 if __name__ == '__main__':
