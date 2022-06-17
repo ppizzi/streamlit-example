@@ -47,7 +47,10 @@ def main():
 
             if data1:
                 df=data1[0]
+                st.text('here2')
                 st.dataframe(df)
+                st.text('here3')
+                st.write(df)
 
 if __name__ == '__main__':
     main()
