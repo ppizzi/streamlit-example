@@ -92,7 +92,7 @@ def main():
                     ax.set_ylabel("Price")
                     fig.suptitle("Precio gasoleo Valdepenas")
                     plt.legend(loc='upper left')
-                 except:
+                except:
                     st.text('file not found')
 
                 
