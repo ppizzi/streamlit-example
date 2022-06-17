@@ -4,14 +4,20 @@ import requests
 import pandas as pd
 
 
+#USEFUL LINKS
+#https://discuss.streamlit.io/t/rendering-data-frames-from-an-html-code/14843/4
 #https://betterprogramming.pub/how-to-make-http-requests-in-streamlit-app-f22a77fd1ed7
+#https://share.streamlit.io/gerardrbentley/streamlit-random/main/pandas_power.py
+#https://discuss.streamlit.io/t/no-module-named-lxml/25251
+#https://stackoverflow.com/questions/44954802/python-importerror-lxml-not-found-please-install-it
+#https://github.com/gerardrbentley/streamlit-random/blob/9711973519977960365df32f077b58f31277c732/pandas_power.py#L104
+#https://discuss.streamlit.io/t/pandas-read-html-as-a-web-app-scrape-tables-from-urls/23565
+#https://betterprogramming.pub/how-to-make-http-requests-in-streamlit-app-f22a77fd1ed7
+#https://docs.streamlit.io/library/api-reference/data/st.dataframe
 
-def fetch(session, url):
-    try:
-        result = session.get(url)
-        return result.json()
-    except Exception:
-        return {}
+
+
+
 
     
 def fetchdf(session, url):
@@ -19,53 +25,48 @@ def fetchdf(session, url):
         st.text(url)
         result = session.get(url)
         st.text(result.status_code)
-        #result.data
-        #result.text
-        #data = pd.read_html(result.text)
-        #data
-        #components.html(result)
-        #df=data[0]
-        #df
-                
-        
-        #st.text('hereA')
-        #st.text(pd.read_html(url)[1])
-        #df=data[0]
-        #df
-        #st.text(result)
         return result
-        #return data
     except Exception:
         return {}
 
 def main():
-    st.set_page_config(page_title="Example App", page_icon="🤖")
-    st.title("Get Image by Id")
+    st.set_page_config(page_title="MyGasApp", page_icon="🤖")
+    st.title("Get gas prices in valedepeñas")
     session = requests.Session()
     with st.form("my_form"):
         index = st.number_input("ID", min_value=0, max_value=100, key="index")
-
         submitted = st.form_submit_button("Submit")
 
         if submitted:
             st.write("Result")
-            #data = fetch(session, f"https://picsum.photos/id/{index}/info")
-            #url1 = 'https://geoportalgasolineras.es/geoportalmovil/eess/search.do?tipoCarburante=4&rotulo=&venta=P&provincia=13&localidad=7339&tipoDestinatarioPlan=&operador=&nombrePlan=&calle=&numero=&codPostal='
-            #st.text(url1)
             res = fetchdf(session, f'https://geoportalgasolineras.es/geoportalmovil/eess/search.do?tipoCarburante=4&rotulo=&venta=P&provincia=13&localidad=7339&tipoDestinatarioPlan=&operador=&nombrePlan=&calle=&numero=&codPostal=' )
-            
-            #if data:
-            #    st.image(data['download_url'], caption=f"Author: {data['author']}")
-            #else:
-            #    st.error("Error")
 
             if res:
                 df=pd.read_html(res.text)
                 df[0]
-                #st.text('here2')
-                #st.dataframe(df)
-                #st.text('here3')
-                #st.write(df)
+
 
 if __name__ == '__main__':
     main()
+    
+    
+#--- old code
+
+#def fetch(session, url):
+#    try:
+#        result = session.get(url)
+#        return result.json()
+#    except Exception:
+#        return {}
+
+
+#data = fetch(session, f"https://picsum.photos/id/{index}/info")
+#url1 = 'https://geoportalgasolineras.es/geoportalmovil/eess/search.do?tipoCarburante=4&rotulo=&venta=P&provincia=13&localidad=7339&tipoDestinatarioPlan=&operador=&nombrePlan=&calle=&numero=&codPostal='
+#st.text(url1)
+
+#if data:
+#    st.image(data['download_url'], caption=f"Author: {data['author']}")
+#else:
+#    st.error("Error")
+
+
