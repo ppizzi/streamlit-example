@@ -33,7 +33,7 @@ def fetchdf(session, url):
 def update_hist(df, hist_df):
     #hist_df.head(5)
     st.write('new shape: ', hist_df.shape)
-    hist_df.dtypes
+
     #hist_df.date = hist_df.date.astype('datetime')
     #hist_df = hist_df.append(df, ignore_index=True)
     #hist_df.sort_values(by=['Rótulo', 'Dirección','date'], ascending=[True, True, True], ignore_index=True, inplace=True)
@@ -75,6 +75,7 @@ def main():
                 except:
                     st.text('file not found')
                     
+                hist_df.dtypes
                 hist_df
         
                     
