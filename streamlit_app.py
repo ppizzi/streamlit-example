@@ -39,12 +39,8 @@ def update_hist(df, hist_df):
     hist_df = hist_df.append(df, ignore_index=True)
     st.write('new shape: ', hist_df.shape)
     hist_df.sort_values(by=['Rótulo', 'Dirección','date'], ascending=[True, True, True], ignore_index=True, inplace=True)
-    #hist_df.drop_duplicates(subset=['Rótulo','Dirección','date'], keep='first', inplace=True, ignore_index=True)
-    #hist_df
-    #st.write('f1')
-    #st.dataframe( hist_df.tail(5))
-    #st.write('f2')
-    #st.write(hist_df)
+    hist_df.drop_duplicates(subset=['Rótulo','Dirección','date'], keep='first', inplace=True, ignore_index=True)
+
     return hist_df
 
 
