@@ -80,8 +80,8 @@ def main():
                     st.text('file not found')
                     
                 # hist_df2 = hist_df.astype(str)
-                #st.write('dtypes hist_df: ', hist_df.dtypes.astype(str))
-                st.write('hist_df.to_list: ', hist_df.to_list())
+                st.write('dtypes hist_df: ', hist_df.dtypes.astype(str))
+                #st.write('hist_df.to_list: ', hist_df.to_list())
                 hist_df
         
                     
