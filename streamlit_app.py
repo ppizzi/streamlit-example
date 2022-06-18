@@ -32,7 +32,7 @@ def fetchdf(session, url):
     
 def update_hist(df, hist_df):
     #hist_df.head(5)
-    #hist_df = hist_df.append(df, ignore_index=True)
+    hist_df = hist_df.append(df, ignore_index=True)
     #hist_df.sort_values(by=['Rótulo', 'Dirección','date'], ascending=[True, True, True], ignore_index=True, inplace=True)
     #hist_df.drop_duplicates(subset=['Rótulo','Dirección','date'], keep='first', inplace=True, ignore_index=True)
     st.write('new shape: ', hist_df.shape)
