@@ -76,9 +76,9 @@ def main():
                 except:
                     st.text('file not found')
                     
-                hist_df = hist_df.astype(str)
-                st.write('dtypes hist_df: ', hist_df.dtypes)
-                hist_df
+                hist_df2 = hist_df.astype(str)
+                st.write('dtypes hist_df2: ', hist_df2.dtypes)
+                hist_df2
         
                     
         savefile = st.form_submit_button('save csv')
