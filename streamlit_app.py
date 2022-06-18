@@ -27,6 +27,20 @@ def fetchdf(session, url):
         return result
     except Exception:
         return {}
+    
+    
+    
+def update_hist(df, hist_df):
+    #hist_df.head(5)
+    hist_df = hist_df.append(df, ignore_index=True)
+    hist_df.sort_values(by=['Rótulo', 'Dirección','date'], ascending=[True, True, True], ignore_index=True, inplace=True)
+    hist_df.drop_duplicates(subset=['Rótulo','Dirección','date'], keep='first', inplace=True, ignore_index=True)
+    st.write('new shape: ', hist_df.shape)
+    #hist_df
+    #st.dataframe( hist_df.tail(5))    
+    return
+
+
 
 def main():
     #st.set_page_config(page_title="MyGasApp", page_icon="🤖")
@@ -51,15 +65,10 @@ def main():
                 try: 
                     hist_df = pd.read_csv('gasolineras_ciudad_real.csv') 
                     st.write('loaded shape', hist_df.shape)
-                    hist_df.head(5)
-                    hist_df = hist_df.append(df, ignore_index=True)
-                    hist_df.sort_values(by=['Rótulo', 'Dirección','date'], ascending=[True, True, True], ignore_index=True, inplace=True)
-                    hist_df.drop_duplicates(subset=['Rótulo','Dirección','date'], keep='first', inplace=True, ignore_index=True)
-                    st.write('new shape: ', hist_df.shape)
-                    #hist_df
-                    #st.dataframe( hist_df.tail(5))
+                    update_hist(df,hist_df)
                 except:
                     st.text('file not found')
+        
                     
         #savefile = st.form_submit_button('save csv')
         #if savefile:
