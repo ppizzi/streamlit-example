@@ -44,6 +44,13 @@ def update_hist(df, hist_df):
     return hist_df
 
 
+def plot_hist(hist_df):
+    
+    st.line_chart(hist_df.loc[:, ['date','Precio'] ]) 
+    
+    return
+
+
 
 def main():
     #st.set_page_config(page_title="MyGasApp", page_icon="🤖")
@@ -80,7 +87,7 @@ def main():
                 #st.write('hist_df.to_list: ', hist_df.to_list())
                 hist_df
                 
-                st.line_chart(hist_df)
+                plot_hist(hist_df)
                     
         savefile = st.form_submit_button('save csv')
         if savefile:
