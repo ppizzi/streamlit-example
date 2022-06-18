@@ -47,6 +47,7 @@ def update_hist(df, hist_df):
 def plot_hist(hist_df):
     hist_df.Precio = hist_df.astype(float)
     hist_df.date = hist_df.astype(datetime)
+    st.write('dtypes new df with date: ', df.dtypes.astype(str))
     st.line_chart(hist_df.loc[hist_df['Rótulo'] == 'FAST FUEL', ['date','Precio'] ]) 
     
     return
