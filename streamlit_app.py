@@ -76,7 +76,7 @@ def main():
                 except:
                     st.text('file not found')
                     
-                #hist_df.dtypes
+                st.write('dtypes hist_df: ', hist_df.dtypes)
                 hist_df
         
                     
