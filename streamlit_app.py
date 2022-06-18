@@ -33,9 +33,9 @@ def fetchdf(session, url):
 def update_hist(df, hist_df):
     #hist_df.head(5)
     st.write('new shape: ', hist_df.shape)
-    st.write('dtypes hist_df: ', hist_df.dtypes)
-    #hist_df.date = pd.astype(hist_df.date, 'datetime')
-    hist_df = hist_df.append(df, ignore_index=True)
+    hist_df.dtypes
+    #hist_df.date = hist_df.date.astype('datetime')
+    #hist_df = hist_df.append(df, ignore_index=True)
     #hist_df.sort_values(by=['Rótulo', 'Dirección','date'], ascending=[True, True, True], ignore_index=True, inplace=True)
     #hist_df.drop_duplicates(subset=['Rótulo','Dirección','date'], keep='first', inplace=True, ignore_index=True)
     #hist_df
