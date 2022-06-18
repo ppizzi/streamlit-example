@@ -18,10 +18,6 @@ import pandas as pd
 #https://betterprogramming.pub/how-to-make-http-requests-in-streamlit-app-f22a77fd1ed7
 #https://docs.streamlit.io/library/api-reference/data/st.dataframe
 
-
-
-
-
     
 def fetchdf(session, url):
     try:
