@@ -8,6 +8,7 @@ import pandas as pd
 
 
 #USEFUL LINKS
+#https://discuss.streamlit.io/t/after-upgrade-to-the-latest-version-now-this-error-id-showing-up-arrowinvalid/15794/26
 #https://discuss.streamlit.io/t/rendering-data-frames-from-an-html-code/14843/4
 #https://betterprogramming.pub/how-to-make-http-requests-in-streamlit-app-f22a77fd1ed7
 #https://share.streamlit.io/gerardrbentley/streamlit-random/main/pandas_power.py
@@ -34,7 +35,7 @@ def update_hist(df, hist_df):
     #hist_df.head(5)
     st.write('new shape: ', hist_df.shape)
     hist_df = hist_df.astype(str)
-    hist_df.date = hist_df.date.astype('datetime')
+    #hist_df.date = hist_df.date.astype('datetime')
     #hist_df = hist_df.append(df, ignore_index=True)
     #hist_df.sort_values(by=['Rótulo', 'Dirección','date'], ascending=[True, True, True], ignore_index=True, inplace=True)
     #hist_df.drop_duplicates(subset=['Rótulo','Dirección','date'], keep='first', inplace=True, ignore_index=True)
