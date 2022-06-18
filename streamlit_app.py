@@ -37,7 +37,7 @@ def update_hist(df, hist_df):
     hist_df.drop_duplicates(subset=['Rótulo','Dirección','date'], keep='first', inplace=True, ignore_index=True)
     st.write('new shape: ', hist_df.shape)
     #hist_df
-    st.dataframe( hist_df.tail(5))    
+    st.write( hist_df.tail(5))    
     return
 
 
