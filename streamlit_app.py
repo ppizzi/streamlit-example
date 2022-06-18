@@ -67,10 +67,12 @@ def main():
                 df.Precio = df.Precio.str.replace('€', '').str.replace(',','.').astype('float')
                 date=pd.to_datetime('today').strftime("%Y%m%d")
                 df['date']=date
+                st.write('dtypes new df with date: ', df.dtypes.astype(str))
                 df
                 
                 try: 
                     hist_df = pd.read_csv('gasolineras_ciudad_real.csv') 
+                    st.write('dtypes hist_df as loaded: ', hist_df.dtypes.astype(str))
                     st.write('loaded shape', hist_df.shape)
                     hist_df = update_hist(df,hist_df)
                     #hist_df
@@ -79,6 +81,7 @@ def main():
                     
                 # hist_df2 = hist_df.astype(str)
                 #st.write('dtypes hist_df: ', hist_df.dtypes.astype(str))
+                st.write('hist_df.to_list: ', hist_df.to_list())
                 hist_df
         
                     
