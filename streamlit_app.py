@@ -47,6 +47,9 @@ def main():
             res = fetchdf(session, f'https://geoportalgasolineras.es/geoportalmovil/eess/search.do?tipoCarburante=4&rotulo=&venta=P&provincia=13&localidad=7339&tipoDestinatarioPlan=&operador=&nombrePlan=&calle=&numero=&codPostal=' )
             if res:
                 df=pd.read_html(res.text)[0]
+                df.Precio = df.Precio.str.replace('€', '').str.replace(',','.').astype('float')
+                date=pd.to_datetime('today').strftime("%Y%m%d")
+                df['date']=date
                 df
                 
                 try: 
