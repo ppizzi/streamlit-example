@@ -79,7 +79,8 @@ def main():
                 st.write('dtypes hist_df: ', hist_df.dtypes.astype(str))
                 #st.write('hist_df.to_list: ', hist_df.to_list())
                 hist_df
-        
+                
+                st.line_chart(hist_df)
                     
         savefile = st.form_submit_button('save csv')
         if savefile:
