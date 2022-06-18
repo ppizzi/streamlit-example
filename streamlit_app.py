@@ -37,7 +37,8 @@ def update_hist(df, hist_df):
     hist_df.drop_duplicates(subset=['Rótulo','Dirección','date'], keep='first', inplace=True, ignore_index=True)
     st.write('new shape: ', hist_df.shape)
     #hist_df
-    st.write( hist_df.tail(5))    
+    st.dataframe( hist_df.tail(5))
+    
     return
 
 
@@ -70,9 +71,9 @@ def main():
                     st.text('file not found')
         
                     
-        #savefile = st.form_submit_button('save csv')
-        #if savefile:
-           # hist_df.to_csv('gasolineras_ciudad_real.csv', index=False)  
+        savefile = st.form_submit_button('save csv')
+        if savefile:
+            hist_df.to_csv('gasolineras_ciudad_real.csv', index=False)  
              
 
 if __name__ == '__main__':
