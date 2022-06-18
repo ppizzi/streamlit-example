@@ -54,7 +54,7 @@ def main():
                     st.write(hist_df.shape)
                     #hist_df.head(5)
                     hist_df = hist_df.append(df, ignore_index=True)
-                    st.write(new shape: ', hist_df.shape)
+                    st.write('new shape: ', hist_df.shape)
                     st.dataframe( hist_df.tail(5)
                  except:
                     st.text('file not found')
