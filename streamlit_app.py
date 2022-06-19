@@ -53,12 +53,7 @@ def run_query(query):
 
 
 def googlesheetsdf(sheet_url):
-    # Create a connection object.
-    conn = connect() 
 
-    # Perform SQL query on the Google Sheet.
-    # Uses st.cache to only rerun when the query changes or after 10 min.
-    @st.cache(ttl=600)
     rows = run_query(f'SELECT * FROM "{sheet_url}"')
 
     # Print results.
@@ -119,11 +114,17 @@ def main():
                 
                 plot_hist(hist_df)
                 
-                
+        # Create a connection object.
+        conn = connect() 
+    
+        # Perform SQL query on the Google Sheet.
+        # Uses st.cache to only rerun when the query changes or after 10 min.
+        @st.cache(ttl=600)
                 
                 
         sheet_url = st.secrets["public_gsheets_url"]
         googlesheetsdf(sheet_url)
+        
                     
         savefile = st.form_submit_button('save csv')
         if savefile:
