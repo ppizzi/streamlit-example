@@ -20,7 +20,21 @@ from gsheetsdb import connect
 #https://betterprogramming.pub/how-to-make-http-requests-in-streamlit-app-f22a77fd1ed7
 #https://docs.streamlit.io/library/api-reference/data/st.dataframe
 
+
+#st.set_page_config(page_title="MyGasApp", page_icon="🤖")
+st.set_page_config(page_title="MyGasApp", page_icon=":fuelpump:")
+st.title("Get gas prices in Valdepeñas")
+
+
+# Create a connection object.
+conn = connect() 
     
+# Perform SQL query on the Google Sheet.
+# Uses st.cache to only rerun when the query changes or after 10 min.
+@st.cache(ttl=600)
+
+
+
 def fetchdf(session, url):
     try:
         st.text(url)
@@ -78,9 +92,7 @@ def plot_hist(hist_df):
 
 
 def main():
-    #st.set_page_config(page_title="MyGasApp", page_icon="🤖")
-    st.set_page_config(page_title="MyGasApp", page_icon=":fuelpump:")
-    st.title("Get gas prices in Valdepeñas")
+
     session = requests.Session()
    
     with st.form("my_form"):
@@ -114,12 +126,7 @@ def main():
                 
                 plot_hist(hist_df)
                 
-        # Create a connection object.
-        conn = connect() 
-    
-        # Perform SQL query on the Google Sheet.
-        # Uses st.cache to only rerun when the query changes or after 10 min.
-        @st.cache(ttl=600)
+
         googlesheetsdf(sheet_url)
         
                     
