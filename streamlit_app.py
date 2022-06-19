@@ -58,7 +58,7 @@ def googlesheetsdf(sheet_url):
 
     # Print results.
     for row in rows:
-    st.write(row.Rótulo)
+        st.write(row.Rótulo)
     
     return
 
