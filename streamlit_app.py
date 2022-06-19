@@ -44,6 +44,8 @@ def update_hist(df, hist_df):
 
     return hist_df
 
+
+
 def run_query(query):
     rows = conn.execute(query, headers=1)
     rows = rows.fetchall()
@@ -57,8 +59,6 @@ def googlesheetsdf():
     # Perform SQL query on the Google Sheet.
     # Uses st.cache to only rerun when the query changes or after 10 min.
     @st.cache(ttl=600)
-
-
     sheet_url = st.secrets["public_gsheets_url"]
     rows = run_query(f'SELECT * FROM "{sheet_url}"')
 
