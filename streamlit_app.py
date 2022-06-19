@@ -5,23 +5,7 @@ import pandas as pd
 from gsheetsdb import connect
 
 
-# Create a connection object.
-conn = connect() 
 
-# Perform SQL query on the Google Sheet.
-# Uses st.cache to only rerun when the query changes or after 10 min.
-@st.cache(ttl=600)
-def run_query(query):
-    rows = conn.execute(query, headers=1)
-    rows = rows.fetchall()
-    return rows
-
-sheet_url = st.secrets["public_gsheets_url"]
-rows = run_query(f'SELECT * FROM "{sheet_url}"')
-
-# Print results.
-for row in rows:
-    st.write(row.Rótulo)
 
 
 #USEFUL LINKS
@@ -59,6 +43,31 @@ def update_hist(df, hist_df):
     hist_df.drop_duplicates(subset=['Rótulo','Dirección','date'], keep='first', inplace=True, ignore_index=True)
 
     return hist_df
+
+def run_query(query):
+    rows = conn.execute(query, headers=1)
+    rows = rows.fetchall()
+    return rows
+
+
+def googlesheetsdf():
+    # Create a connection object.
+    conn = connect() 
+
+    # Perform SQL query on the Google Sheet.
+    # Uses st.cache to only rerun when the query changes or after 10 min.
+    @st.cache(ttl=600)
+
+
+    sheet_url = st.secrets["public_gsheets_url"]
+    rows = run_query(f'SELECT * FROM "{sheet_url}"')
+
+    # Print results.
+    for row in rows:
+    st.write(row.Rótulo)
+    
+    return
+
 
 
 def plot_hist(hist_df):
