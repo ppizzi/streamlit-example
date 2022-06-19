@@ -21,7 +21,7 @@ rows = run_query(f'SELECT * FROM "{sheet_url}"')
 
 # Print results.
 for row in rows:
-    st.write(row)
+    st.write(row.Rótulo)
 
 
 #USEFUL LINKS
