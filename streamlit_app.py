@@ -120,8 +120,6 @@ def main():
         # Perform SQL query on the Google Sheet.
         # Uses st.cache to only rerun when the query changes or after 10 min.
         @st.cache(ttl=600)
-                
-                
         sheet_url = st.secrets["public_gsheets_url"]
         googlesheetsdf(sheet_url)
         
