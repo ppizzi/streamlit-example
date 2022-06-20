@@ -101,10 +101,8 @@ def main():
             url = 'https://geoportalgasolineras.es/geoportalmovil/eess/search.do?tipoCarburante=4&rotulo=&venta=P&provincia=13&localidad=7339&tipoDestinatarioPlan=&operador=&nombrePlan=&calle=&numero=&codPostal='
             st.text(url)
             st.write("Result")
-            
-
             res = fetchdf(session, url )
-            st.text(result.status_code)
+            st.text(res.status_code)
             if res:
                 df=pd.read_html(res.text)[0]
                 df.Precio = df.Precio.str.replace('€', '').str.replace(',','.').astype('float')
