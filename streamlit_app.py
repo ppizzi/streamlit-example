@@ -32,12 +32,12 @@ conn = connect()
 # Perform SQL query on the Google Sheet.
 # Uses st.cache to only rerun when the query changes or after 10 min.
 @st.cache(ttl=600)
+@st.cache(suppress_st_warning=True)
 
 
 
 def fetchdf(session, url):
     try:
-        st.text(url)
         result = session.get(url)
         return result
     except Exception:
@@ -98,8 +98,12 @@ def main():
         submitted = st.form_submit_button("Submit")
 
         if submitted:
+            url = 'https://geoportalgasolineras.es/geoportalmovil/eess/search.do?tipoCarburante=4&rotulo=&venta=P&provincia=13&localidad=7339&tipoDestinatarioPlan=&operador=&nombrePlan=&calle=&numero=&codPostal='
+            st.text(url)
             st.write("Result")
-            res = fetchdf(session, f'https://geoportalgasolineras.es/geoportalmovil/eess/search.do?tipoCarburante=4&rotulo=&venta=P&provincia=13&localidad=7339&tipoDestinatarioPlan=&operador=&nombrePlan=&calle=&numero=&codPostal=' )
+            
+
+            res = fetchdf(session, url )
             st.text(result.status_code)
             if res:
                 df=pd.read_html(res.text)[0]
