@@ -39,7 +39,6 @@ def fetchdf(session, url):
     try:
         st.text(url)
         result = session.get(url)
-        st.text(result.status_code)
         return result
     except Exception:
         return {}
@@ -101,6 +100,7 @@ def main():
         if submitted:
             st.write("Result")
             res = fetchdf(session, f'https://geoportalgasolineras.es/geoportalmovil/eess/search.do?tipoCarburante=4&rotulo=&venta=P&provincia=13&localidad=7339&tipoDestinatarioPlan=&operador=&nombrePlan=&calle=&numero=&codPostal=' )
+            st.text(result.status_code)
             if res:
                 df=pd.read_html(res.text)[0]
                 df.Precio = df.Precio.str.replace('€', '').str.replace(',','.').astype('float')
