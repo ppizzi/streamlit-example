@@ -147,7 +147,8 @@ def main():
         # Create API client.
         credentials = service_account.Credentials.from_service_account_info(st.secrets["gcp_service_account"])
         client = storage.Client(credentials=credentials)
-        
+        st.write('my client on GCP is:')
+        st.write(client)
         
         bucket_name = "streamlit-bucket-gasolinera"
         file_path = "GasolinerasVDP.csv"
