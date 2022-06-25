@@ -2,7 +2,7 @@ import streamlit as st
 import streamlit.components.v1 as components
 import requests
 import pandas as pd
-from gsheetsdb import connect
+from gsheetsdb import connect #<-works
 from shillelagh.backends.apsw.db import connect as ctsh
 #from shillelagh.backends.apsw.db import connect
 
@@ -31,14 +31,11 @@ st.title("Get gas prices in Valdepeñas")
 
 
 # Create a connection object. gsheet
-conn = connect() 
-    
+ conn = connect()                                   #<-works
 # Perform SQL query on the Google Sheet.
 # Uses st.cache to only rerun when the query changes or after 10 min.
-@st.cache(ttl=600)
-@st.cache(suppress_st_warning=True)
-
-
+ @st.cache(ttl=600)                                 #<-works
+ @st.cache(suppress_st_warning=True)                #<-works
 
 
 def fetchdf(session, url):
@@ -48,8 +45,7 @@ def fetchdf(session, url):
     except Exception:
         return {}
     
-    
-    
+       
 def update_hist(df, hist_df):
     #hist_df.head(5)
 
@@ -63,14 +59,13 @@ def update_hist(df, hist_df):
     return hist_df
 
 
-
-def run_query(query):
+def run_query(query): #  based on gsheets
     rows = conn.execute(query, headers=1)
     rows = rows.fetchall()
     return rows
 
 
-def googlesheetsdf(sheet_url):
+def googlesheetsdf(sheet_url):  #based on gsheets
     rows = run_query(f'SELECT * FROM "{sheet_url}"')
 
     # Print results.
@@ -132,10 +127,10 @@ def main():
                 
                 plot_hist(hist_df)
                 
-        sheet_url = st.secrets["public_gsheets_url"]
-        googlesheetsdf(sheet_url)
+        sheet_url = st.secrets["public_gsheets_url"]   #gsheets
+        googlesheetsdf(sheet_url)                      #gsheets
         
-        #----------- new code SQL
+        #----------- new code SQL  #shillelagh
         #connection = connect(":memory:")
         connectionsh = ctsh(":memory:")
 
@@ -145,7 +140,7 @@ def main():
         #for row in cursor.execute(query):
         #    print(row)
    
-        #----------------- 
+        #-----------------  #shillelagh
     
     
         savefile = st.form_submit_button('save csv')
@@ -155,25 +150,6 @@ def main():
 
 if __name__ == '__main__':
     main()
-    
-    
-#--- old code
-
-#def fetch(session, url):
-#    try:
-#        result = session.get(url)
-#        return result.json()
-#    except Exception:
-#        return {}
-
-
-#data = fetch(session, f"https://picsum.photos/id/{index}/info")
-#url1 = 'https://geoportalgasolineras.es/geoportalmovil/eess/search.do?tipoCarburante=4&rotulo=&venta=P&provincia=13&localidad=7339&tipoDestinatarioPlan=&operador=&nombrePlan=&calle=&numero=&codPostal='
-#st.text(url1)
-
-#if data:
-#    st.image(data['download_url'], caption=f"Author: {data['author']}")
-#else:
-#    st.error("Error")
+ 
 
 
