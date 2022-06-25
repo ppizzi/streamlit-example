@@ -34,8 +34,8 @@ st.title("Get gas prices in Valdepeñas")
 ####conn = connect()                                   #<-works
 # Perform SQL query on the Google Sheet.
 # Uses st.cache to only rerun when the query changes or after 10 min.
-####@st.cache(ttl=600)                                 #<-works
-####@st.cache(suppress_st_warning=True)                #<-works
+@st.cache(ttl=600)                                 #<-works
+@st.cache(suppress_st_warning=True)                #<-works
 
 
 def fetchdf(session, url):
@@ -134,11 +134,12 @@ def main():
         connection = connect(":memory:")
         #connectionsh = ctsh(":memory:")
 
-        #cursor = connectionsh.cursor()
+        cursor = connectionsh.cursor()
 
         #query = "SELECT * FROM a_table"
-        #for row in cursor.execute(query):
-        #    print(row)
+        query = "SELECT * FROM "sheet_url
+        for row in cursor.execute(query):
+            print(row)
    
         #-----------------  #shillelagh
     
