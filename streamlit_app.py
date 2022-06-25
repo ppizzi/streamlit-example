@@ -131,7 +131,7 @@ def main():
         ###googlesheetsdf(sheet_url)                      #gsheets
         
         #----------- new code SQL  #shillelagh
-        #connection = connect(":memory:")
+        connection = connect(":memory:")
         #connectionsh = ctsh(":memory:")
 
         #cursor = connectionsh.cursor()
