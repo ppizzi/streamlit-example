@@ -132,9 +132,9 @@ def main():
         
         #----------- new code SQL  #shillelagh
         #connection = connect(":memory:")
-        connectionsh = ctsh(":memory:")
+        #connectionsh = ctsh(":memory:")
 
-        cursor = connectionsh.cursor()
+        #cursor = connectionsh.cursor()
 
         #query = "SELECT * FROM a_table"
         #for row in cursor.execute(query):
