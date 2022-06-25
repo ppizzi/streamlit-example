@@ -145,7 +145,7 @@ def main():
         SQL3 = 'INSERT INTO "{}" VALUES ("{}", "{}", "{}", "{}")'.format(sheet_url, 'FAST', 'CIAO', '99', '20220625') 
         st.write(SQL3)
         
-        #cursor.execute(SQL3)
+        cursor.execute(SQL3)
             
         #-----------------  #shillelagh
     
