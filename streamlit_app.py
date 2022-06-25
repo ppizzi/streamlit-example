@@ -152,6 +152,10 @@ def main():
         st.write('this is the query')
         st.write(SQL)
         
+        st.write('this is my version')
+        SQL2= str(f'{sheet_url}')
+        st.write(SQL2)
+        
         for row in cursor.execute(SQL):
             st.write(row)
    
