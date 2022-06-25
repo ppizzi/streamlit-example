@@ -2,9 +2,9 @@ import streamlit as st
 import streamlit.components.v1 as components
 import requests
 import pandas as pd
-from gsheetsdb import connect #<-works
-from shillelagh.backends.apsw.db import connect as ctsh
-#from shillelagh.backends.apsw.db import connect
+#from gsheetsdb import connect #<-works
+#from shillelagh.backends.apsw.db import connect as ctsh
+from shillelagh.backends.apsw.db import connect
 
 
 
@@ -31,11 +31,11 @@ st.title("Get gas prices in Valdepeñas")
 
 
 # Create a connection object. gsheet
-conn = connect()                                   #<-works
+####conn = connect()                                   #<-works
 # Perform SQL query on the Google Sheet.
 # Uses st.cache to only rerun when the query changes or after 10 min.
-@st.cache(ttl=600)                                 #<-works
-@st.cache(suppress_st_warning=True)                #<-works
+####@st.cache(ttl=600)                                 #<-works
+####@st.cache(suppress_st_warning=True)                #<-works
 
 
 def fetchdf(session, url):
@@ -128,7 +128,7 @@ def main():
                 plot_hist(hist_df)
                 
         sheet_url = st.secrets["public_gsheets_url"]   #gsheets
-        googlesheetsdf(sheet_url)                      #gsheets
+        ###googlesheetsdf(sheet_url)                      #gsheets
         
         #----------- new code SQL  #shillelagh
         #connection = connect(":memory:")
