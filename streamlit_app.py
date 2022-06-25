@@ -9,9 +9,6 @@ from google.oauth2 import service_account
 from google.cloud import storage
 
 
-
-
-
 #USEFUL LINKS
 #https://docs.streamlit.io/knowledge-base/tutorials/databases/gcs
 #https://github.com/betodealmeida/shillelagh/
@@ -44,8 +41,7 @@ st.title("Get gas prices in Valdepeñas")
 #------------GOOGLE OATUH code
 # Create API client.
 credentials = service_account.Credentials.from_service_account_info(
-    st.secrets["gcp_service_account"]
-)
+    st.secrets["gcp_service_account"])
 client = storage.Client(credentials=credentials)
 #------------------------
 
