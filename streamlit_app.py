@@ -142,8 +142,10 @@ def main():
         #    st.write(row)
         
         
-        SQL3 = str(f'INSERT INTO "{sheet_url}" VALUES ('FAST', 'CIAO', '99', '20220625')' )
-        cursor.execute(SQL3)
+        SQL3 = str(f'INSERT INTO "{}" VALUES ({}, {}, {}, {}, {})'.format(sheet_url, 'FAST', 'CIAO', '99', '20220625') )
+        st.write(SQL3)
+        
+        #cursor.execute(SQL3)
             
         #-----------------  #shillelagh
     
