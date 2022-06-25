@@ -3,12 +3,14 @@ import streamlit.components.v1 as components
 import requests
 import pandas as pd
 from gsheetsdb import connect
+from shillelagh.backends.apsw.db import connect as ctsh
 
 
 
 
 
 #USEFUL LINKS
+#https://github.com/betodealmeida/shillelagh/
 #https://discuss.streamlit.io/t/after-upgrade-to-the-latest-version-now-this-error-id-showing-up-arrowinvalid/15794/26
 #https://discuss.streamlit.io/t/rendering-data-frames-from-an-html-code/14843/4
 #https://betterprogramming.pub/how-to-make-http-requests-in-streamlit-app-f22a77fd1ed7
@@ -26,13 +28,33 @@ st.set_page_config(page_title="MyGasApp", page_icon=":fuelpump:")
 st.title("Get gas prices in Valdepeñas")
 
 
-# Create a connection object.
+# Create a connection object. gsheet
 conn = connect() 
     
 # Perform SQL query on the Google Sheet.
 # Uses st.cache to only rerun when the query changes or after 10 min.
 @st.cache(ttl=600)
 @st.cache(suppress_st_warning=True)
+
+
+#----------- new code SQL
+
+
+
+#connection = connect(":memory:")
+connectionsh = ctsh(":memory:")
+
+cursor = connectionsh.cursor()
+
+#query = "SELECT * FROM a_table"
+#for row in cursor.execute(query):
+#    print(row)
+   
+#----------------- 
+
+
+
+
 
 
 
