@@ -31,11 +31,11 @@ st.title("Get gas prices in Valdepeñas")
 
 
 # Create a connection object. gsheet
- conn = connect()                                   #<-works
+conn = connect()                                   #<-works
 # Perform SQL query on the Google Sheet.
 # Uses st.cache to only rerun when the query changes or after 10 min.
- @st.cache(ttl=600)                                 #<-works
- @st.cache(suppress_st_warning=True)                #<-works
+@st.cache(ttl=600)                                 #<-works
+@st.cache(suppress_st_warning=True)                #<-works
 
 
 def fetchdf(session, url):
