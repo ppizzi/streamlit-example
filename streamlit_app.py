@@ -4,6 +4,8 @@ import requests
 import pandas as pd
 from gsheetsdb import connect
 from shillelagh.backends.apsw.db import connect as ctsh
+#from shillelagh.backends.apsw.db import connect
+
 
 
 
@@ -35,25 +37,6 @@ conn = connect()
 # Uses st.cache to only rerun when the query changes or after 10 min.
 @st.cache(ttl=600)
 @st.cache(suppress_st_warning=True)
-
-
-#----------- new code SQL
-
-
-
-#connection = connect(":memory:")
-connectionsh = ctsh(":memory:")
-
-cursor = connectionsh.cursor()
-
-#query = "SELECT * FROM a_table"
-#for row in cursor.execute(query):
-#    print(row)
-   
-#----------------- 
-
-
-
 
 
 
@@ -152,7 +135,19 @@ def main():
         sheet_url = st.secrets["public_gsheets_url"]
         googlesheetsdf(sheet_url)
         
-                    
+        #----------- new code SQL
+        #connection = connect(":memory:")
+        connectionsh = ctsh(":memory:")
+
+        cursor = connectionsh.cursor()
+
+        #query = "SELECT * FROM a_table"
+        #for row in cursor.execute(query):
+        #    print(row)
+   
+        #----------------- 
+    
+    
         savefile = st.form_submit_button('save csv')
         if savefile:
             hist_df.to_csv('gasolineras_ciudad_real.csv', index=False)  
