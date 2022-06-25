@@ -146,9 +146,10 @@ def main():
             
         SQL = """
         SELECT *
-        FROM "sheet_url"
+        FROM "https://docs.google.com/spreadsheets/d/12Irn7teiX9Z5msPu5vAIpsfGTF7EXc3ob8qK6VOJjL4/edit?usp=sharing"
         """
         #FROM "https://docs.google.com/spreadsheets/d/1_rN3lm0R_bU3NemO0s9pbFkY5LQPcuy1pscv8ZXPtg8/edit#gid=1648320094"
+        #FROM "sheet_url"
         for row in cursor.execute(SQL):
             print(row)
    
