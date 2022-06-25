@@ -135,24 +135,7 @@ def main():
         #connectionsh = ctsh(":memory:")
 
         cursor = connection.cursor()
-
-        #query = "SELECT * FROM a_table"
-        #query = f'"SELECT * FROM {sheet_url}"'
-        #query = "SELECT * FROM {sheet_url}"
-        #query = f"SELECT * FROM {sheet_url}"
-        #for row in cursor.execute(query):
-        #    print(row)
-        
-        
-            
-        SQL = """
-        SELECT *
-        FROM "https://docs.google.com/spreadsheets/d/12Irn7teiX9Z5msPu5vAIpsfGTF7EXc3ob8qK6VOJjL4/edit?usp=sharing"  
-        """
-        st.write('this is the query')
-        st.write(SQL)
-        
-        st.write('this is my version')
+ 
         SQL2= str(f'SELECT * FROM "{sheet_url}"')
         st.write(SQL2)
         
@@ -170,5 +153,11 @@ def main():
 if __name__ == '__main__':
     main()
  
-
+####---------OLD CODE--------
+#        SQL = """
+#        SELECT *
+#        FROM "url here"  
+#        """
+#        st.write('this is the query')
+#        st.write(SQL)
 
