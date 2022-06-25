@@ -143,16 +143,16 @@ def main():
         #for row in cursor.execute(query):
         #    print(row)
         
-        sheet_url2 = "https://docs.google.com/spreadsheets/d/12Irn7teiX9Z5msPu5vAIpsfGTF7EXc3ob8qK6VOJjL4/edit?usp=sharing"
+        
             
         SQL = """
         SELECT *
-        FROM sheet_url2
+        FROM "https://docs.google.com/spreadsheets/d/12Irn7teiX9Z5msPu5vAIpsfGTF7EXc3ob8qK6VOJjL4/edit?usp=sharing"  
         """
-        #FROM "https://docs.google.com/spreadsheets/d/12Irn7teiX9Z5msPu5vAIpsfGTF7EXc3ob8qK6VOJjL4/edit?usp=sharing"  #<- works
+        st.write('this is the query')
+        st.write(SQL)
         
         for row in cursor.execute(SQL):
-            #print(row)
             st.write(row)
    
         #-----------------  #shillelagh
