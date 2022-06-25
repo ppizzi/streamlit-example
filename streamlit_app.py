@@ -13,6 +13,7 @@ from shillelagh.backends.apsw.db import connect
 
 #USEFUL LINKS
 #https://github.com/betodealmeida/shillelagh/
+#https://github.com/betodealmeida/shillelagh/blob/main/examples/gsheets.py
 #https://discuss.streamlit.io/t/after-upgrade-to-the-latest-version-now-this-error-id-showing-up-arrowinvalid/15794/26
 #https://discuss.streamlit.io/t/rendering-data-frames-from-an-html-code/14843/4
 #https://betterprogramming.pub/how-to-make-http-requests-in-streamlit-app-f22a77fd1ed7
@@ -132,16 +133,18 @@ def main():
         
         #----------- new code SQL  #shillelagh
         connection = connect(":memory:")
-        #connectionsh = ctsh(":memory:")
-
         cursor = connection.cursor()
  
-        SQL2= str(f'SELECT * FROM "{sheet_url}"')
-        st.write(SQL2)
+        #READ TABLE - works
+        #SQL2= str(f'SELECT * FROM "{sheet_url}"')
+        #st.write(SQL2)
+        #for row in cursor.execute(SQL2):
+        #    st.write(row)
         
-        for row in cursor.execute(SQL2):
-            st.write(row)
-   
+        
+        SQL3 = str(f'INSERT INTO "{sheet_url}" VALUES ('FAST', 'CIAO', '99', '20220625')' )
+        cursor.execute(SQL3)
+            
         #-----------------  #shillelagh
     
     
