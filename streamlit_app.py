@@ -3,7 +3,7 @@ import streamlit.components.v1 as components
 import requests
 import pandas as pd
 from gsheetsdb import connect #<-works
-from shillelagh.backends.apsw.db import connect as ctsh
+#from shillelagh.backends.apsw.db import connect as ctsh
 #from shillelagh.backends.apsw.db import connect
 
 
