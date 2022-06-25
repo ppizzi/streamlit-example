@@ -153,7 +153,9 @@ def main():
         file_path = "GasolinerasVDP.csv"
         content = read_file(bucket_name, file_path)
         
-        
+        # Print results.
+        for line in content:
+            st.write(line)
         #------------------------
         
         
