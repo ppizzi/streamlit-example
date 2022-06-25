@@ -134,7 +134,7 @@ def main():
         connection = connect(":memory:")
         #connectionsh = ctsh(":memory:")
 
-        cursor = connectionsh.cursor()
+        cursor = connection.cursor()
 
         #query = "SELECT * FROM a_table"
         query = f'"SELECT * FROM {sheet_url}"'
