@@ -147,7 +147,7 @@ def main():
             
         SQL = """
         SELECT *
-        FROM "sheet_url2"
+        FROM sheet_url2
         """
         #FROM "https://docs.google.com/spreadsheets/d/12Irn7teiX9Z5msPu5vAIpsfGTF7EXc3ob8qK6VOJjL4/edit?usp=sharing"  #<- works
         
