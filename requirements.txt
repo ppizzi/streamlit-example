@@ -3,5 +3,5 @@ pandas
 streamlit
 lxml
 gsheetsdb
-gspread
+#gspread
 shillelagh
