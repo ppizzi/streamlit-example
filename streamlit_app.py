@@ -43,12 +43,6 @@ st.title("Get gas prices in Valdepeñas")
 # Uses st.experimental_memo to only rerun when the query changes or after 10 min.
 @st.experimental_memo(ttl=600)
 
-#------------GOOGLE OATUH code
-
-def read_file(client, bucket_name, file_path):
-    bucket = client.bucket(bucket_name)
-    content = bucket.blob(file_path).download_as_string().decode("utf-8")
-    return content
 
 #------------
 
@@ -147,28 +141,31 @@ def main():
         
         
 
-        #GOOGLE CLOUD -----------
+        #------------GOOGLE OATUH code
+        #---GOOGLE CLOUD -----------
+        
+        def read_file( bucket_name, file_path):
+            bucket = client.bucket(bucket_name)
+            content = bucket.blob(file_path).download_as_string().decode("utf-8")
+            return content
+
         # Create API client.
         credentials = service_account.Credentials.from_service_account_info(st.secrets["gcp_service_account"])
         client = storage.Client(credentials=credentials)
         st.write('my client on GCP is:')
         st.write(client)
         
+          
         bucket_name = "streamlit-bucket-gasolinera"
         file_path = "GasolinerasVDP.csv"
-        content = read_file(client, bucket_name, file_path)
+        content = read_file(bucket_name, file_path)
         
         # Print results.
         for line in content:
             st.write(line)
         #------------------------
         
-        
-        
-        
-        
-        
-        
+       
         
         
         #----------- new code SQL  #shillelagh
