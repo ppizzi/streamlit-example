@@ -137,7 +137,8 @@ def main():
         cursor = connection.cursor()
 
         #query = "SELECT * FROM a_table"
-        query = f'"SELECT * FROM {sheet_url}"'
+        #query = f'"SELECT * FROM {sheet_url}"'
+        query = "SELECT * FROM {sheet_url}"
         for row in cursor.execute(query):
             print(row)
    
