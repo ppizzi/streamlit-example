@@ -156,7 +156,7 @@ def main():
         SQL2= str(f'SELECT * FROM "{sheet_url}"')
         st.write(SQL2)
         
-        for row in cursor.execute(SQL):
+        for row in cursor.execute(SQL2):
             st.write(row)
    
         #-----------------  #shillelagh
