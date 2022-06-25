@@ -40,8 +40,7 @@ st.title("Get gas prices in Valdepeñas")
 
 #------------GOOGLE OATUH code
 # Create API client.
-credentials = service_account.Credentials.from_service_account_info(
-    st.secrets["gcp_service_account"])
+credentials = service_account.Credentials.from_service_account_info(st.secrets["gcp_service_account"])
 client = storage.Client(credentials=credentials)
 #------------------------
 
