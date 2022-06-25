@@ -4,14 +4,16 @@ import requests
 import pandas as pd
 #from gsheetsdb import connect #<-works
 #from shillelagh.backends.apsw.db import connect as ctsh
-from shillelagh.backends.apsw.db import connect
-
+from shillelagh.backends.apsw.db import connect  #<-works also for reading
+from google.oauth2 import service_account
+from google.cloud import storage
 
 
 
 
 
 #USEFUL LINKS
+#https://docs.streamlit.io/knowledge-base/tutorials/databases/gcs
 #https://github.com/betodealmeida/shillelagh/
 #https://github.com/betodealmeida/shillelagh/blob/main/examples/gsheets.py
 #https://discuss.streamlit.io/t/after-upgrade-to-the-latest-version-now-this-error-id-showing-up-arrowinvalid/15794/26
