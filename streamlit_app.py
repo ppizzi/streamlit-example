@@ -41,6 +41,16 @@ st.title("Get gas prices in Valdepeñas")
 @st.cache(suppress_st_warning=True)                #<-works
 
 
+#------------GOOGLE OATUH code
+# Create API client.
+credentials = service_account.Credentials.from_service_account_info(
+    st.secrets["gcp_service_account"]
+)
+client = storage.Client(credentials=credentials)
+#------------------------
+
+
+
 def fetchdf(session, url):
     try:
         result = session.get(url)
