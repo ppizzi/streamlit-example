@@ -161,6 +161,7 @@ def main():
         content = read_file(bucket_name, file_path)
         
         # Print results.
+        st.write(content)
         for line in content.strip().split("\n"):
             st.write(line)
         #------------------------
