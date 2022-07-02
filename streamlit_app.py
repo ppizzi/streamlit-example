@@ -24,6 +24,10 @@ from google.cloud import storage
 #https://betterprogramming.pub/how-to-make-http-requests-in-streamlit-app-f22a77fd1ed7
 #https://docs.streamlit.io/library/api-reference/data/st.dataframe
 
+#https://www.w3schools.com/sql/sql_insert.asp
+#INSERT INTO table_name (column1, column2, column3, ...)
+#VALUES (value1, value2, value3, ...);
+
 
 #st.set_page_config(page_title="MyGasApp", page_icon="🤖")
 st.set_page_config(page_title="MyGasApp", page_icon=":fuelpump:")
@@ -182,7 +186,7 @@ def main():
         
         SQL3 = 'INSERT INTO "{}" VALUES ("{}", "{}", "{}", "{}")'.format(sheet_url, 'FAST', 'CIAO', '99', '20220625') 
         st.write(SQL3)
-        
+        #fails due to missing oauth -> https://shillelagh.readthedocs.io/en/latest/adapters.html
         #cursor.execute(SQL3)
             
         #-----------------  #shillelagh
